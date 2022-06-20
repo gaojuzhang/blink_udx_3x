@@ -8,11 +8,10 @@
     <artifactId>blink-udx-3.x</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-
     <properties>
         <scala.version>2.11.12</scala.version>
         <scala.binary.version>2.11</scala.binary.version>
-        <blink.version>blink-3.2.2</blink.version>
+        <blink.version>blink-3.3.0</blink.version>
         <java.version>1.8</java.version>
     </properties>
 
@@ -21,33 +20,38 @@
             <groupId>com.alibaba.blink</groupId>
             <artifactId>flink-core</artifactId>
             <version>${blink.version}</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/flink-core-blink-3.2.2.jar</systemPath>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.alibaba.blink</groupId>
             <artifactId>flink-streaming-java_${scala.binary.version}</artifactId>
             <version>${blink.version}</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/flink-streaming-java_2.11-blink-3.2.2.jar</systemPath>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.alibaba.blink</groupId>
             <artifactId>flink-table_2.11</artifactId>
             <version>${blink.version}</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/flink-table_2.11-blink-3.2.2.jar</systemPath>
+            <scope>provided</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.avro/avro -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.8.1</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.scala-lang</groupId>
-            <artifactId>scala-library</artifactId>
-            <version>2.11.12</version>
+            <groupId>org.apache.avro</groupId>
+            <artifactId>avro</artifactId>
+            <version>1.11.0</version>
         </dependency>
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptorRefs>
+                    <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
